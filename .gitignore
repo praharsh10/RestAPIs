@@ -5,3 +5,5 @@
 *.properties
 *.jar
 *.classpath
+*.MF
+
