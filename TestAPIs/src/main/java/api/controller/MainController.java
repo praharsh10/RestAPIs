@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import api.service.MainService;
 
+
 @RestController
 public class MainController {
 	
@@ -20,6 +21,15 @@ public class MainController {
 	{
 		return this.service.getCall();
 	}
+	
+	@RequestMapping(value = "/anotherCall", method = RequestMethod.GET)
+	@ResponseBody
+	public String anotherCall()
+	{
+		return this.service.anotherCall();
+	}
+	
+	
 	
 	@RequestMapping(value = "/resetHystrix", method = RequestMethod.GET)
 	@ResponseBody

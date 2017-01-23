@@ -1,7 +1,9 @@
 package api.hystrix;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import api.external.ExternalSim;
 
@@ -14,18 +16,20 @@ public class HystrixWrapper extends HystrixCommand<String>{
 	@Autowired
 	ExternalSim externalSimulator;
 	
-	public HystrixWrapper(Setter config, ExternalSim externalService)
+	public HystrixWrapper(HystrixCommand.Setter config, ExternalSim externalService)
 	{
 		super(config);
-		this.externalSimulator = externalService;
-		
+        this.externalSimulator = externalService;	
 	}
 
 	@Override
 	protected String run() throws Exception {
-		/*System.out.println("circuit breaker state :"+super.circuitBreaker.isOpen());
-		System.out.println(super.metrics.getHealthCounts());
-		System.out.println("Running run");*/
+		String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(Calendar.getInstance().getTime());
+		
+/*		System.out.println(timeStamp+" : circuit breaker state :"+super.circuitBreaker.isOpen());
+		System.out.println(super.metrics.getHealthCounts());*/
+		/*System.out.println("Running run");*/
+		/*System.out.println("");*/
 		return externalSimulator.getExternalData();
 	}
 	

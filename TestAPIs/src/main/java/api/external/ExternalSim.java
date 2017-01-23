@@ -23,7 +23,7 @@ public class ExternalSim {
 	
 	public String getExternalData() throws InterruptedException
 	{
-		System.out.println("Called external");
+		/*System.out.println("Called external");*/
 		Thread.sleep(wait);
 		/*System.out.println("returned Response");*/
         return "Success";
